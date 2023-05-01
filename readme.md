@@ -5,7 +5,7 @@ Ujjwal is a web application that allows users to organize and participate in cle
 * HTML/CSS
 * JavaScript
 * Bootstrap
-* PostgreSQL (database)
+* sqlite3 (database)
 # Features
 * Users can register themselves on the website and organize cleanliness drives in their areas, providing service to the community. They can provide information about the date, time, location.
 * Other users can view the ongoing cleanliness drives, and if interested, they can volunteer and participate in the drives.
