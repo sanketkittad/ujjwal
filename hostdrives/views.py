@@ -109,6 +109,12 @@ def login(request):
             return redirect('joinlist')
     redirect('home')
 def logout(request):
+    global joinRecvd
+    global joinMessage
+    global joinType
+    joinRecvd=False
+    joinMessage=""
+    joinType=""
     auth_logout(request)
     return redirect('home')
 def loginform(request):

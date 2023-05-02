@@ -14,7 +14,7 @@ body{
 .btn{
     text-transform: unset!important;
 }
-.card{
+.card-mod{
     width: 75vw; 
     transition: transform 0.3s;
     /**box-shadow: 0 2px 4px 0 #08D9D6, 0 6px 20px 0 #08D9D6;
@@ -22,12 +22,13 @@ body{
 
 
 }
+.collapse .navbar-nav .nav-item .nav-link{
+	color: #F6F1F1;
+}
 
-.card:hover{ 
-    box-shadow: 1px 3px 7px #08D9D6;
-    -ms-transform:scale(1.08);
-   -webkit-transform:  scale(1.08);
-   transform: scale(1.08);
+.card-mod:hover{ 
+    box-shadow: 1px 3px 7px #19A7CE;
+
  }
 .card-header{
     background-color: #fff;
