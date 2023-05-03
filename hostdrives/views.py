@@ -58,7 +58,7 @@ def register(request):
         w.save()
         auth_user=authenticate(request,username=username,password=password1)
         auth_login(request,auth_user)
-        return redirect('joinlist',{})
+        return redirect('joinlist')
     return redirect('loginform')
 @login_required(redirect_field_name='login')
 def joinlist(request):
@@ -107,7 +107,7 @@ def login(request):
         else:
             auth_login(request,user)
             return redirect('joinlist')
-    redirect('home')
+    return redirect('home')
 def logout(request):
     global joinRecvd
     global joinMessage
