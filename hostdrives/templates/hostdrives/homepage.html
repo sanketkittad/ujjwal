@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.js"></script>
-
+    
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'hostdrives/style.css'%}">
   </head>
@@ -35,55 +35,8 @@
           </li>
           
           {%if request.user.is_authenticated %}
-          <li class="nav-item ">
-            <button class="nav-link btn btn-link"  data-bs-toggle="modal" data-bs-target="#hostDrive">Host A Drive</button>
-            <div class="modal fade" id="hostDrive" tabindex="-1" aria-labelledby="hostDriveLabel" aria-hidden="true">
-              <div class="modal-dialog modal-dialog-centered ">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="hostDriveLabel">Host a Drive</h5>
-                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>                          </div>
-                  <div class="modal-body">
-                    <form method="POST" action="{%url 'host'%}">
-                      {%csrf_token%}
-                      <div class="form-outline mb-4">
-                        <input type="text" name="driveName" id="form1" class="form-control" />
-                        <label class="form-label" for="form1">Drive Name</label>
-                      </div>
-                    
-                      <div class="form-outline mb-4">
-                        <input type="location" name="driveLocation" id="form3" class="form-control" />
-                        <label class="form-label" for="form3">Location</label>
-                      </div>
-            
-                      <div class="form-outline mb-4">
-                        <input type="datetime-local" name="driveDate"  id="form4" class="form-control py-w" name="date" />
-                        
-                      </div>
-                      
-                      <div class="form-outline mb-4">
-                        <textarea class="form-control" name="driveDescription" id="form5" rows="4"></textarea>
-                        <label class="form-label" for="form5">Drive Details</label>
-                      </div>
-                    
-                   
-                    
-                      <!-- Submit button -->
-                      <button type="submit" class="btn btn-primary btn-block mb-4">Host</button>
-                    </form>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
           <li class="nav-item active">
-            <a class="nav-link" href="{%url 'joinlist'%}">Join A Drive</a>
+            <a class="nav-link" href="{%url 'joinlist'%}">Join/Host A Drive</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="{%url 'logout'%}">Logout</a>
@@ -93,64 +46,8 @@
             <a class="nav-link" href="{%url 'loginform'%}">Login/Sign Up</a>
           </li>
           {%endif%}
-          {%if request.user.is_authenticated%}
-          <li class="nav-item">
-            <button class="nav-link btn btn-link"  data-bs-toggle="modal" data-bs-target="#viewProfile">Your Profile</button>
-            <div class="modal fade" id="viewProfile" tabindex="-1" role="dialog" aria-labelledby="viewProfileLabel" aria-hidden="true">
-              <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-                <div class=" bg-transparent border border-0  shadow-none modal-content">
-                  <button type="button" class="close d-flex" data-bs-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true" class="ml-auto">&times;</span>
-                    </button>
-                  <div class="modal-body bg-transparent">
-                    
-                      <div class="card bg-transparent border-0 mb-3" >
-                        <div class="row  pl-1" >
-                          <div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius: .5rem;border-bottom-left-radius: .5rem;">
-                            <img src="{%static 'hostdrives/profile_icon.jpg'%}"
-                              alt="Avatar" class="img-fluid mt-5 mb-2" style="width: 80px;" />
-                              <div class="text-center text-white" >
-                                {{request.user.first_name}} {{request.user.last_name}}
-                              </div>
-                          </div>
-                          <div class="col-md-8 bg-white" style="background-color: #EAEAEA;border-top-right-radius: .5rem;border-bottom-right-radius: .5rem;" >
-                            <div class="card-body p-4" >
-                              <h6>Your Profile</h6>
-                              <hr class="mt-0 mb-4">
-                              <div class="row pt-1">
-                                <div class="col-6 mb-3">
-                                  <h6>Email</h6>
-                                  <p class="text-muted">{{request.user.email}}</p>
-                                </div>
-                                <div class="col-6 mb-3">
-                                  <h6>Phone</h6>
-                                  <p class="text-muted">{{userinfo.phone}}</p>
-                                </div>
-                              </div>
-                              
-                              <hr class="mt-0 mb-4">
-                              <div class="row pt-1">
-                                <div class="col-6 mb-3">
-                                  <h6>Number of Drives Hosted</h6>
-                                  <p class="text-muted">{{userinfo.hosted}}</p>
-                                </div>
-                                <div class="col-6 mb-3">
-                                  <h6>Number of Drives Attended</h6>
-                                  <p class="text-muted">{{userinfo.attended}}</p>
-                                </div>
-                              </div>
-                              
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  
-                </div>
-              </div>
-            </div>
-          </li>
-          {%endif%}
+         
+
         </ul>
       </div>
   </nav>

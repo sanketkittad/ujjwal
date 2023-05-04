@@ -6,7 +6,18 @@
 	box-sizing: border-box;
 	font-family: 'Lato';
 	overflow-x: hidden;
+	
 }
+.gradient-custom {
+    /* fallback for old browsers */
+    background: #08D9D6;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right bottom, #08D9D6, #059f9c);
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right bottom, #08D9D6, #059f9c)
+    }
 .navbar{
 	background-color: #19A7CE;
 	font-size: 1.1rem;
@@ -20,6 +31,7 @@
 	position: relative;
 	height: 100vh;
 	width: 100%;
+	overflow-y: hidden;
 }
 #carousel .carousel-inner{
 	position: relative;

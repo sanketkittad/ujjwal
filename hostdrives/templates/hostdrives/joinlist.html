@@ -189,9 +189,10 @@
     <div class="d-flex pt-5 flex-column w-100 h-auto">
         {%for drive in drives%}
         <div class="card card-mod mb-5 mx-auto" style="width: 75vw;">
-          <div class="card-header   d-flex flex-row">
+          <div class="card-header   d-flex flex-column">
             <h5 class="card-title fw-semibold py-2 my-auto">{{drive.name}}</h5>
-            
+
+            <div style="font-size:0.8rem;">This organiser has hosted {{userinfo.hosted}}</div>
           </div>
             <div class="card-body">
               
