@@ -246,7 +246,7 @@
                       </div>
                     </div>
                     {%endif%}
-                    {%if drive.organizer == request.user%}
+                    {%if drive.organizer == userinfo%}
                     <button type="button" class="btn btn-secondary my-auto mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal2{{drive.id}}">
                       Take attendance and delete event
                     </button>
