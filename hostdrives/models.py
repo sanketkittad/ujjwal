@@ -9,12 +9,12 @@ class websiteUser(models.Model):
     attended=models.IntegerField(blank=True)
     
 class drive(models.Model):
-    organizer=models.ForeignKey(User,on_delete=models.CASCADE)
+    organizer=models.ForeignKey(websiteUser,on_delete=models.CASCADE)
     name=models.CharField(max_length=255)
     date=models.DateTimeField()
     description=models.TextField()
     location=models.CharField(max_length=255)
-    attendees=models.ManyToManyField(User,related_name='attending_events',null=True)
+    attendees=models.ManyToManyField(websiteUser,related_name='attending_events',null=True)
     def __str__(self):
         return self.name
 
