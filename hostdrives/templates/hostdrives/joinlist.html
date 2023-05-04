@@ -62,8 +62,8 @@
                           <label class="form-label" for="form3">Location</label>
                         </div>
               
-                        <div class="form-outline mb-4">
-                          <input type="datetime-local" name="driveDate"  id="form4" class="form-control py-w" name="date" />
+                        <div class="form-outline mb-4 date" id="datetimepicker">
+                          <input type="datetime-local" name="driveDate"  id="form4" class="form-control py-w" />
                           
                         </div>
                         
@@ -308,6 +308,11 @@
         {% endfor %}
     </div>
     <script>
+      $(function () {
+        $('#datetimepicker').datetimepicker({  
+            minDate:new Date()
+         });
+      });
       function modifyFunction(){
         const checkBox=document.getElementById('checkBoxAccept').checked;
         if(checkBox){
