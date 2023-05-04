@@ -21,10 +21,11 @@ def host(request):
         print(date)
         print(type(date))
         description=request.POST['driveDescription']
-        newDrive=models.drive(name=name,location=location,description=description,date=date,organizer=request.user)
+        currUser=websiteUser.objects.filter(user=request.user)
+        newDrive=models.drive(name=name,location=location,description=description,date=date,organizer=currUser[0])
         newDrive.save()
-        userinfo=models.websiteUser.objects.filter(user=request.user)
-        prevHosted=userinfo[0].hosted
+        
+        prevHosted=currUser[0].hosted
         models.websiteUser.objects.filter(user=request.user).update(hosted=prevHosted+1)
         # global joinRecvd
         # global joinMessage
@@ -71,10 +72,10 @@ def joinlist(request):
 def join(request,id):
     print(id)
     currDrive=models.drive.objects.get(id=id)
-
-    currDrive.attendees.add(request.user)
-    userinfo=models.websiteUser.objects.filter(user=request.user)
-    prevHosted=userinfo[0].attended
+    currUser=websiteUser.objects.filter(user=request.user)
+    currDrive.attendees.add(currUser[0])
+    
+    prevHosted=currUser[0].attended
     models.websiteUser.objects.filter(user=request.user).update(attended=prevHosted+1)
     # global joinRecvd
     # global joinMessage
@@ -85,10 +86,10 @@ def join(request,id):
     return redirect('joinlist')
 def withdraw(request,id):
     currDrive=models.drive.objects.get(id=id)
-
-    currDrive.attendees.remove(request.user)
-    userinfo=models.websiteUser.objects.filter(user=request.user)
-    prevHosted=userinfo[0].attended
+    currUser=websiteUser.objects.filter(user=request.user)
+    currDrive.attendees.remove(currUser[0])
+    
+    prevHosted=currUser[0].attended
     models.websiteUser.objects.filter(user=request.user).update(attended=prevHosted-1)
     # global joinRecvd
     # global joinMessage

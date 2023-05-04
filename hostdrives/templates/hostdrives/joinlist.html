@@ -204,7 +204,7 @@
                     
                     
                     
-                    {%if drive.organizer == request.user%}
+                    {%if drive.organizer == userinfo%}
                     <button type="button" class="btn btn-primary my-auto mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{drive.id}}">
                       View
                     </button>
@@ -223,14 +223,16 @@
                                   <th scope="col">  First Name</th>
                                   <th scope="col">Last Name</th>
                                   <th scope="col">Email</th>
+                                  <th scope="col">Phone</th>
                                 </tr>
                               </thead>
                               {%for attendee in drive.attendees.all%}
                               <tbody>
                                 <tr>
-                                  <td>{{attendee.first_name}}</td>
-                                  <td>{{attendee.last_name}}</td>
-                                  <td>{{attendee.email}}</td>
+                                  <td>{{attendee.user.first_name}}</td>
+                                  <td>{{attendee.user.last_name}}</td>
+                                  <td>{{attendee.user.email}}</td>
+                                  <td>{{attendee.user.phone}}</td>
                                 </tr>
                               </tbody>
                               {%endfor%}
@@ -244,7 +246,7 @@
                       </div>
                     </div>
                     {%endif%}
-                    {%if not request.user in drive.attendees.all%}
+                    {%if not userinfo in drive.attendees.all%}
                     <a href="{% url 'join' drive.id %}" class="btn btn-outline-success my-auto mx-1" >Join</a>
                     {%else%}
                     <div class="alert p-2 text-white mx-2 my-auto"  style="background-color: #198754;" role="alert">
