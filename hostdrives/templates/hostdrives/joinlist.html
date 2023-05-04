@@ -199,13 +199,13 @@
               <p class="card-text">{{drive.date}}</p>
               <p class="card-text">{{drive.location}}</p>
               <p class="card-text">{{drive.description}}</p>
-              <div class="d-flex justify-content-end">
+              <div class="d-flex justify-content-end ">
                   <!--div class="row"-->
                     
                     
                     
                     {%if drive.organizer == request.user%}
-                    <button type="button" class="btn btn-primary my-auto mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal{{drive.id}}">
+                    <button type="button" class="btn btn-primary my-auto mx-1 d-flex" data-bs-toggle="modal" data-bs-target="#exampleModal{{drive.id}}">
                       View
                     </button>
                     <div class="modal fade" id="exampleModal{{drive.id}}" tabindex="-1" aria-labelledby="exampleModalLabel{{drive.id}}" aria-hidden="true">
@@ -238,6 +238,51 @@
                           </div>
                           <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    {%endif%}
+                    {%if drive.organizer == request.user%}
+                    <button type="button" class="btn btn-secondary my-auto mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal2{{drive.id}}">
+                      Take attendance and delete event
+                    </button>
+                    <div class="modal fade" id="exampleModal2{{drive.id}}" tabindex="-1" aria-labelledby="exampleModalLabel2{{drive.id}}" aria-hidden="true">
+                      <div class="modal-dialog modal-dialog-centered" >
+                        <div class="modal-content" style="background-color: #F6F1F1">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel2{{drive.id}}">{{drive.name}} Attendees</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>                         
+                          </div>
+                          <div class="modal-body">
+                            <table class="table  table-bordered" style="background-color: #EAEAEA; color:black">
+                              <thead>
+                                <tr>
+                                  <th scope="col">First Name</th>
+                                  <th scope="col">Email</th>
+                                  <th scope="col">Mark attendance</th>
+                                </tr>
+                              </thead>
+                              {%for attendee in drive.attendees.all%}
+                              <tbody>
+                                <tr>
+                                  <td>{{attendee.first_name}}</td>
+                                  <td>{{attendee.email}}</td>
+                                  <td>
+                                    <div class="form-check form-switch" >
+                                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                    </div>
+                                  </td>
+                                </tr>
+                              </tbody>
+                              {%endfor%}
+                            </table>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Submit and Delete</button>
                             
                           </div>
                         </div>

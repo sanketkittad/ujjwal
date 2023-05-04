@@ -13,6 +13,7 @@ body{
     }
 .btn{
     text-transform: unset!important;
+    transition: none;
 }
 .card-mod{
     width: 75vw; 
