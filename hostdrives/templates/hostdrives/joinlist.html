@@ -62,8 +62,8 @@
                           <label class="form-label" for="form3">Location</label>
                         </div>
               
-                        <div class="form-outline mb-4">
-                          <input type="datetime-local" name="driveDate"  id="form4" class="form-control py-w" name="date" />
+                        <div class="form-outline mb-4 date" id="datetimepicker">
+                          <input type="datetime-local" name="driveDate"  id="form4" class="form-control py-w" />
                           
                         </div>
                         
@@ -125,7 +125,7 @@
                         <div class="card bg-transparent border-0 mb-3" >
                           <div class="row  pl-1" >
                             <div class="col-md-4 gradient-custom text-center text-white" style="border-top-left-radius: .5rem;border-bottom-left-radius: .5rem;">
-                              <img src="{%static 'hostdrives/profile_icon.jpg'%}"
+                              <img src="{%static 'hostdrives/profile2.avif'%}"
                                 alt="Avatar" class="img-fluid mt-5 mb-2" style="width: 80px;" />
                                 <div class="text-center text-white" >
                                   {{request.user.first_name}} {{request.user.last_name}}
@@ -274,8 +274,9 @@
                                   <td>{{attendee.user.first_name}}</td>
                                   <td>{{attendee.user.email}}</td>
                                   <td>
-                                    <div class="form-check form-switch" >
-                                      <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                    <div>
+                                      <button type="button" class="btn btn-primary">Submit</button>
+                                      
                                     </div>
                                   </td>
                                 </tr>
@@ -307,6 +308,11 @@
         {% endfor %}
     </div>
     <script>
+      $(function () {
+        $('#datetimepicker').datetimepicker({  
+            minDate:new Date()
+         });
+      });
       function modifyFunction(){
         const checkBox=document.getElementById('checkBoxAccept').checked;
         if(checkBox){
