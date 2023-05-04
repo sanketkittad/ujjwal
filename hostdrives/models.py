@@ -8,7 +8,6 @@ class websiteUser(models.Model):
     hosted=models.IntegerField(blank=True)
     attended=models.IntegerField(blank=True)
     
-
 class drive(models.Model):
     organizer=models.ForeignKey(User,on_delete=models.CASCADE)
     name=models.CharField(max_length=255)

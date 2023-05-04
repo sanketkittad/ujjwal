@@ -172,7 +172,7 @@
           </ul>
         </div>
     </nav>
-    {%if joinRcvd%}
+    {% comment %} {%if joinRcvd%}
     <div aria-live="assertive" role="alert" aria-atomic="true" class="bg-body-primary position-relative bd-example-toasts rounded-3">
       <div class="toast-container p-3  top-0 end-0" id="toastPlacement" data-original-class="toast-container p-3">
         <div class="toast fade text-bg-{{joinType}} pr-2 d-flex flex-row show" data-bs-delay="1000">
@@ -185,7 +185,7 @@
         </div>
       </div>
     </div>
-    {%endif%}
+    {%endif%} {% endcomment %}
     <div class="d-flex pt-5 flex-column w-100 h-auto">
         {%for drive in drives%}
         <div class="card card-mod mb-5 mx-auto" style="width: 75vw;">

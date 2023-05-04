@@ -7,9 +7,9 @@ from .models import websiteUser
 # Create your views here.
 from django.urls import reverse
 
-joinRecvd=False
-joinMessage=""
-joinType=""
+# joinRecvd=False
+# joinMessage=""
+# joinType=""
 def home(request):
    return render(request,"hostdrives/homepage.html") 
 def host(request):
@@ -26,12 +26,12 @@ def host(request):
         userinfo=models.websiteUser.objects.filter(user=request.user)
         prevHosted=userinfo[0].hosted
         models.websiteUser.objects.filter(user=request.user).update(hosted=prevHosted+1)
-        global joinRecvd
-        global joinMessage
-        global joinType
-        joinRecvd=False
-        joinMessage=""
-        joinType=""
+        # global joinRecvd
+        # global joinMessage
+        # global joinType
+        # joinRecvd=False
+        # joinMessage=""
+        # joinType=""
         return redirect('joinlist')
 def register(request):
     if request.method=='POST':
@@ -64,10 +64,10 @@ def register(request):
 def joinlist(request):
     driveset=models.drive.objects.all()
     userinfo=models.websiteUser.objects.get(user=request.user)
-    global joinRecvd
-    global joinMessage
-    global joinType
-    return render(request,"hostdrives/joinlist.html",{"drives": driveset,"userinfo":userinfo,"joinRcvd":joinRecvd,"joinMessage":joinMessage,"joinType":joinType})      
+    # global joinRecvd
+    # global joinMessage
+    # global joinType
+    return render(request,"hostdrives/joinlist.html",{"drives": driveset,"userinfo":userinfo})      
 def join(request,id):
     print(id)
     currDrive=models.drive.objects.get(id=id)
@@ -76,12 +76,12 @@ def join(request,id):
     userinfo=models.websiteUser.objects.filter(user=request.user)
     prevHosted=userinfo[0].attended
     models.websiteUser.objects.filter(user=request.user).update(attended=prevHosted+1)
-    global joinRecvd
-    global joinMessage
-    global joinType
-    joinRecvd=True
-    joinMessage=currDrive.name+" Joined succesfully!"
-    joinType="success"
+    # global joinRecvd
+    # global joinMessage
+    # global joinType
+    # joinRecvd=True
+    # joinMessage=currDrive.name+" Joined succesfully!"
+    # joinType="success"
     return redirect('joinlist')
 def withdraw(request,id):
     currDrive=models.drive.objects.get(id=id)
@@ -90,12 +90,12 @@ def withdraw(request,id):
     userinfo=models.websiteUser.objects.filter(user=request.user)
     prevHosted=userinfo[0].attended
     models.websiteUser.objects.filter(user=request.user).update(attended=prevHosted-1)
-    global joinRecvd
-    global joinMessage
-    global joinType
-    joinRecvd=True
-    joinMessage=currDrive.name+" Withdrew succesfully!"
-    joinType="danger"
+    # global joinRecvd
+    # global joinMessage
+    # global joinType
+    # joinRecvd=True
+    # joinMessage=currDrive.name+" Withdrew succesfully!"
+    # joinType="danger"
     return redirect('joinlist')
 def login(request):
     if request.method=='POST':
@@ -109,19 +109,19 @@ def login(request):
             return redirect('joinlist')
     return redirect('home')
 def logout(request):
-    global joinRecvd
-    global joinMessage
-    global joinType
-    joinRecvd=False
-    joinMessage=""
-    joinType=""
+    # global joinRecvd
+    # global joinMessage
+    # global joinType
+    # joinRecvd=False
+    # joinMessage=""
+    # joinType=""
     auth_logout(request)
     return redirect('home')
 def loginform(request):
-    global joinRecvd
-    global joinMessage
-    global joinType
-    joinRecvd=False
-    joinMessage=""
-    joinType=""
+    # global joinRecvd
+    # global joinMessage
+    # global joinType
+    # joinRecvd=False
+    # joinMessage=""
+    # joinType=""
     return render(request,"hostdrives/loginform.html",{"exists": False})
