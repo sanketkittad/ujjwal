@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import websiteUser
 # Create your views here.
 from django.urls import reverse
-
+from datetime import datetime
 # joinRecvd=False
 # joinMessage=""
 # joinType=""
@@ -63,8 +63,11 @@ def register(request):
     return redirect('loginform')
 @login_required(redirect_field_name='login')
 def joinlist(request):
-    driveset=models.drive.objects.all()
+    
     userinfo=models.websiteUser.objects.get(user=request.user)
+    # print(driveset[0].date)
+    curr=datetime.now()
+    driveset=models.drive.objects.filter(date__gt=curr)
     # global joinRecvd
     # global joinMessage
     # global joinType
