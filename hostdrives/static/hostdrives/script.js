@@ -13,3 +13,11 @@ $(document).on("scroll", function() {
       }
     }
   });
+
+  $(function pick() {
+    $('#datetimepicker').datetimepicker({  
+        minDate:new Date()
+     });
+  });
+
+  
